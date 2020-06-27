@@ -8,8 +8,8 @@ steps:
     args: [ 'push', 'gcr.io/$PROJECT_ID/gceme:${SHORT_SHA}' ]
 
   - id: 'deploy'
-    #  name: 'gcr.io/cloud-builders/gcloud'
-    name: 'gcr.io/cloud-builders/gke-deploy'
+    name: 'gcr.io/cloud-builders/gcloud'
+#    name: 'gcr.io/cloud-builders/gke-deploy'
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=${_CLOUDSDK_COMPUTE_ZONE}'
       - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLOUDSDK_CONTAINER_CLUSTER}'

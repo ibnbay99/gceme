@@ -24,9 +24,10 @@ steps:
 
         gcloud container clusters get-credentials "$${CLUSTER}" --project "$${PROJECT}" --zone "$${ZONE}"
 
-        sed -i 's|gcr.io/cloud-solutions-images/gceme:.*|gcr.io/$PROJECT_ID/gceme:${SHORT_SHA}|' ./kubernetes/deployments/canary/*.yaml
+        sed -i 's|gcr.io/cloud-solutions-images/gceme:.*|gcr.io/$PROJECT_ID/gceme:${SHORT_SHA}|' ./kubernetes/deployments/prod/*.yaml
 
-        kubectl apply --namespace production --recursive -f kubernetes/deployments/canary
+        kubectl get ns production || kubectl create ns production
+        kubectl apply --namespace production --recursive -f kubernetes/deployments/prod
         kubectl apply --namespace production --recursive -f kubernetes/services
 
 #  args:

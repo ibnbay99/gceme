@@ -29,7 +29,6 @@ steps:
         kubectl apply --namespace production --recursive -f kubernetes/deployments/canary
         kubectl apply --namespace production --recursive -f kubernetes/services
 
-
 #  args:
 #    ['',
 #
